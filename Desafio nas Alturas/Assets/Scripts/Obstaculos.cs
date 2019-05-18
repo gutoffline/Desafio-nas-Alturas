@@ -9,12 +9,26 @@ public class Obstaculos : MonoBehaviour
     [SerializeField]
     private float variacaoDaPosicaoY;
 
+    private Vector3 posicaoDoAviao;
+    private Pontuacao pontuacao;
+    private bool pontuei;
+
+    void Start()
+    {
+        posicaoDoAviao = GameObject.FindObjectOfType<Aviao>().transform.position;
+        pontuacao = GameObject.FindObjectOfType<Pontuacao>();        
+    }
+
     private void Awake() {
         transform.Translate(Vector3.up * Random.Range(-variacaoDaPosicaoY, variacaoDaPosicaoY));
     }
     void Update()
     {
         transform.Translate(Vector3.left * velocidade);
+        if(!pontuei && this.transform.position.x < posicaoDoAviao.x){
+            pontuei = true;
+            pontuacao.AdicionarPontos();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D outro) {
