@@ -8,6 +8,10 @@ public class Diretor : MonoBehaviour
     [SerializeField]
     private Aviao aviao;
     private Pontuacao pontuacao;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 329c98b72cca46323a0890162a64b10a94caa3f7
     public void FinalizarJogo(){
         Time.timeScale = 0;
         imagemGameOver.SetActive(true);
